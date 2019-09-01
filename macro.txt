@@ -1,0 +1,53 @@
+Sub rowempty()
+lastRow = Selection.SpecialCells(xlCellTypeLastCell).Row
+'Sheets.Add.Name = "toProcess"
+
+
+For i = 1 To lastRow
+    account = Range("A" & i).Value
+    callResult = Range("C" & i).Value
+    
+    If Not IsEmpty(account) And Not IsEmpty(callResult) Then
+        Range("A" & i, "I" & i).Copy
+        Sheets("toProcess").Select
+        Range("A" & i).Select
+        ActiveSheet.Paste
+        Sheets("Data").Select
+    
+        
+    End If
+Next i
+
+
+End Sub
+
+Sub limpiar()
+
+'account = Range("A1").Value
+'callResult = Range("C1").Value
+'
+'Selection.SpecialCells(xlCellTypeLastCell).Select
+'lastRow = ActiveCell.Row
+'
+'For i = 2 To lastRow
+'    account = Range("A" & i).Value
+'    callResult = Range("C" & i).Value
+'If account = "" Or callResult = "" Then
+'    Range("j" & i).Value = "Account or CallResult empty"
+'End If
+'
+''Range(Selection.SpecialCells(xlCellTypeLastCell), "A1").Select
+'Next i
+'
+'    Columns("J:J").Select
+'    Selection.Delete
+
+account = Range("f2").Value
+If account > "00:00:27" Then
+    MsgBox "mayor"
+Else
+    MsgBox "Menor"
+End If
+
+
+End Sub
